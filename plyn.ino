@@ -19,16 +19,19 @@ void setup(){
   lcd.backlight();
   mq2.begin();
 }
+
 void loop(){
   if (digitalRead(BUTTON_PIN) == LOW) {
+    lcd.clear();
     lcd.setCursor(0,0);
-    lcd.print("SEDLAK PETR     ");
+    lcd.print("SEDLAK PETR");
     lcd.print(co);
     lcd.setCursor(0,1);
-    lcd.print("PUSH FOR VALUES ");
+    lcd.print("PUSH FOR VALUES");
     delay(100);
   }
   else {
+    lcd.clear();
     lpg = mq2.readLPG();
     co = mq2.readCO();
     smoke = mq2.readSmoke();
@@ -37,11 +40,10 @@ void loop(){
     lcd.print(lpg);
     lcd.print(" CO:");
     lcd.print(co);
-    lcd.print("    ");
     lcd.setCursor(0,1);
     lcd.print("SMOKE:");
     lcd.print((smoke*100)/1000000);
-    lcd.print(" %      ");
+    lcd.print(" %");
     delay(1000);
   }
   
